@@ -1,9 +1,9 @@
-use sysinfo::{ProcessExt, System, SystemExt};
+#[cfg(target_os = "macos")]
+mod macos;
+
+#[cfg(target_os = "macos")]
+use macos::hello;
 
 fn main() {
-    let sys = System::new_all();
-
-    for (pid, process) in sys.processes() {
-        println!("[{}] {} {:?}", pid, process.name(), process.disk_usage());
-    }
+    hello();
 }
